@@ -1,31 +1,22 @@
-import { TestBed } from '@angular/core/testing';
+import {byRole, createComponentFactory, Spectator} from '@ngneat/spectator/jest'
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  });
+ let spectator: Spectator<AppComponent>
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+ const createComponent = createComponentFactory({
+   component: AppComponent
+ })
 
-  it(`should have as title 'spectator-by-role'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('spectator-by-role');
-  });
+ beforeEach(() =>{
+   spectator = createComponent()
+ })
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('spectator-by-role app is running!');
-  });
+ it('should find a button', () =>{
+   const button = spectator.query(byRole('button', {name: /new button/i}))
+
+   expect(button).toBeTruthy()
+ })
+
+ 
 });
