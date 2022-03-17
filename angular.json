@@ -67,6 +67,10 @@
           },
           "defaultConfiguration": "production"
         },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          
+        },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {

@@ -12,11 +12,6 @@ describe('AppComponent', () => {
    spectator = createComponent()
  })
 
- it('should find a button', () =>{
-   const button = spectator.query(byRole('button', {name: /new button/i}))
-
-   expect(button).toBeTruthy()
- })
 
  
 });
