@@ -13,6 +13,6 @@ describe('ButtonComponent', () => {
   })
 
   it('should find the button', () =>{
-    console.log(spectator.element)
+    console.log(spectator.query(byRole('button')))
   })
 });
